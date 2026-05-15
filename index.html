@@ -114,7 +114,7 @@ a,
   height: 60px;
   width: auto;
   object-fit: contain;
-  background: rgba(255,255,255,0.08);
+  
   padding: 0.25rem;
   border-radius: 3px;
 }
@@ -985,37 +985,46 @@ a,
   text-overflow: ellipsis;
 
   min-height: 105px;
-}.infografias-grid {
+
+}/* ── INFOGRAFÍAS ── */
+
+.infografias-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
+/* Contenedor visual de cada infografía */
 .infografias-grid img {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
-  background: white;
+  height: 520px;
+  object-fit: contain;
+  background: transparent !important;
   cursor: pointer;
-  border: 1px solid rgba(74,140,63,0.25);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-  transition: transform 0.25s, box-shadow 0.25s;
+
+  border: none !important;
+  box-shadow: none !important;
+
+  display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .infografias-grid img:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+  transform: scale(1.03);
+  filter: drop-shadow(0 16px 28px rgba(0,0,0,0.22));
 }
+
+/* MODAL INFOGRAFÍAS */
 
 .infografia-modal {
   position: fixed;
   inset: 0;
-  background: rgba(5,10,5,0.9);
-  z-index: 999;
+  background: rgba(5,10,5,0.96);
+  z-index: 99999;
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 0;
 }
 
 .infografia-modal.active {
@@ -1024,59 +1033,99 @@ a,
 
 .infografia-modal-content {
   position: relative;
-  width: min(1000px, 95%);
-  height: 90vh;
-  background: var(--verde-oscuro);
-  border: 1px solid rgba(200,168,75,0.35);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  width: 100vw;
+  height: 100vh;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+
+  padding: 3rem 5rem;
 }
 
 .infografia-modal-content img {
-  max-width: 100%;
-  max-height: 100%;
+  width: auto;
+  height: auto;
+
+  max-width: 94vw;
+  max-height: 94vh;
+
   object-fit: contain;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
+/* Flechas */
 .infografia-carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(10,21,10,0.75);
+  background: rgba(10,21,10,0.82);
   color: var(--dorado);
-  border: 1px solid rgba(200,168,75,0.4);
-  font-size: 3rem;
-  width: 52px;
-  height: 64px;
+  border: 1px solid rgba(200,168,75,0.45);
+  font-size: 3.8rem;
+  width: 64px;
+  height: 78px;
   cursor: pointer;
   z-index: 3;
 }
 
 .infografia-carousel-btn.prev {
-  left: 1rem;
+  left: 1.2rem;
 }
 
 .infografia-carousel-btn.next {
-  right: 1rem;
+  right: 1.2rem;
 }
 
+/* Botón cerrar */
+.infografia-modal .modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 5;
+}
+
+/* Responsive */
 @media (max-width: 900px) {
   .infografias-grid {
     grid-template-columns: 1fr;
   }
 
   .infografias-grid img {
-    height: 260px;
+    height: 520px;
   }
 
   .infografia-modal-content {
-    height: 82vh;
-    padding: 1rem;
+    padding: 3rem 3rem;
   }
-}.videos-grid {
+
+  .infografia-modal-content img {
+    max-width: 96vw;
+    max-height: 92vh;
+  }
+}
+
+@media (max-width: 520px) {
+  .infografias-grid img {
+    height: 420px;
+  }
+
+  .infografia-carousel-btn {
+    width: 46px;
+    height: 62px;
+    font-size: 2.8rem;
+  }
+
+  .infografia-modal-content {
+    padding: 3rem 2.5rem;
+  }
+}
+.videos-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 1.5rem;
@@ -1256,6 +1305,56 @@ a,
   gap: 1rem;
 }
 
+.reporte-caso-wide {
+  margin-top: 2rem;
+  width: 100%;
+  background: #fff8f8;
+  border: 1px solid rgba(139,32,32,0.22);
+  border-left: 6px solid var(--rojo-alerta);
+  padding: 1.8rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+.reporte-caso-wide-title {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rojo-alerta);
+  margin-bottom: 0.55rem;
+}
+
+.reporte-caso-wide p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #5a5a5a;
+  margin: 0;
+}
+
+.reporte-caso-wide a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 260px;
+  background: var(--rojo-alerta);
+  color: white;
+  padding: 0.9rem 1.5rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.reporte-caso-wide a:hover {
+  background: #a72a2a;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 900px) {
   .mapa-grid {
     grid-template-columns: 1fr;
@@ -1263,6 +1362,16 @@ a,
 
   .mapa-contenedor {
     height: 420px;
+  }
+
+  .reporte-caso-wide {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .reporte-caso-wide a {
+    width: 100%;
+    min-width: 0;
   }
 }/* ── GALERÍA ── */
 /* ── GALERÍA ── */
@@ -1415,6 +1524,330 @@ a,
     font-size: 2.6rem;
   }
 }
+  
+
+/* ── AJUSTE NAV / LOGOS ──
+   Reglas finales para que los logos del nav mantengan proporción,
+   no se aplasten y el menú se acomode sin invadirlos. */
+nav {
+  height: 96px;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
+  gap: 1.5rem;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 0 0 auto;
+  min-width: max-content;
+}
+
+.nav-logo-img {
+  height: 68px;
+  width: auto;
+  max-width: 210px;
+  object-fit: contain;
+  display: block;
+ 
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+ 
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+  list-style: none;
+  min-width: 0;
+}
+
+.nav-links a {
+  white-space: nowrap;
+  font-size: clamp(0.66rem, 0.72vw, 0.8rem);
+}
+
+@media (max-width: 1100px) {
+  nav {
+    height: auto;
+    min-height: 108px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-logo-img {
+    height: 58px;
+    max-width: 180px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 0.55rem 1rem;
+  }
+
+  .hero {
+    padding-top: 170px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  nav {
+    min-height: 120px;
+  }
+
+  .nav-brand {
+    gap: 0.55rem;
+  }
+
+  .nav-logo-img {
+    height: 48px;
+    max-width: 145px;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.62rem;
+  }
+
+  .hero {
+    padding-top: 190px !important;
+  }
+}
+
+  
+
+/* ── AJUSTE EXTRA: LOGOS MÁS GRANDES + HERO MÁS LLENO ── */
+nav {
+  height: 108px;
+}
+
+.nav-brand {
+  gap: 1.15rem;
+}
+
+.nav-logo-img {
+  height: 78px;
+  max-width: 245px;
+  padding: 0.5rem 0.8rem;
+}
+
+.hero-badge {
+  width: clamp(320px, 25vw, 390px);
+  height: clamp(320px, 25vw, 390px);
+  right: clamp(2rem, 5vw, 6rem);
+  border-width: 4px;
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+@media (max-width: 1200px) {
+  .nav-logo-img {
+    height: 70px;
+    max-width: 215px;
+  }
+
+  .hero-badge {
+    width: 310px;
+    height: 310px;
+    right: 2rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  nav {
+    min-height: 118px;
+  }
+
+  .nav-logo-img {
+    height: 64px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-badge {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  nav {
+    min-height: 132px;
+  }
+
+  .nav-logo-img {
+    height: 54px;
+    max-width: 165px;
+    padding: 0.4rem 0.55rem;
+  }
+}
+
+  
+
+/* ── AJUSTE FINAL MAPA + CARRUSEL DE VIDEOS ── */
+.videos-carousel {
+  position: relative;
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 0 4.4rem 3.2rem;
+}
+
+.videos-viewport {
+  overflow: hidden;
+  border: 1px solid rgba(200,168,75,0.22);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+  background: rgba(255,255,255,0.035);
+}
+
+.videos-carousel .videos-grid {
+  display: flex;
+  grid-template-columns: none;
+  gap: 0;
+  transition: transform 0.45s ease;
+  will-change: transform;
+}
+
+.videos-carousel .video-card {
+  flex: 0 0 100%;
+  max-width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.videos-carousel .video-card:hover {
+  transform: none;
+}
+
+.videos-carousel .video-thumb {
+  aspect-ratio: 16 / 9;
+}
+
+.videos-carousel .video-info {
+  min-height: 150px;
+  padding: 1.8rem 2rem;
+}
+
+.videos-carousel .video-info h3 {
+  font-size: clamp(1.15rem, 2vw, 1.6rem);
+}
+
+.video-carousel-btn {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  width: 58px;
+  height: 78px;
+  border: 1px solid rgba(200,168,75,0.45);
+  background: rgba(10,21,10,0.88);
+  color: var(--dorado);
+  font-size: 3.6rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.video-carousel-btn:hover {
+  background: var(--dorado);
+  color: var(--verde-oscuro);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.video-carousel-btn.prev { left: 0; }
+.video-carousel-btn.next { right: 0; }
+
+.video-carousel-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-carousel-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(200,168,75,0.75);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.2s, background 0.2s;
+}
+
+.video-carousel-dot.active {
+  width: 28px;
+  background: var(--dorado);
+}
+
+#mapa .mapa-grid {
+  align-items: stretch;
+  margin-bottom: 2.2rem;
+}
+
+#mapa .mapa-stats {
+  height: 100%;
+}
+
+#mapa .mapa-stats > div:last-child {
+  height: 100%;
+}
+
+#mapa .reporte-caso-wide {
+  margin-top: 2.4rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  position: relative;
+  clear: both;
+}
+
+@media (max-width: 900px) {
+  .videos-carousel {
+    padding: 0 3rem 3rem;
+  }
+
+  .video-carousel-btn {
+    width: 44px;
+    height: 62px;
+    font-size: 2.8rem;
+  }
+
+  .videos-carousel .video-info {
+    min-height: 0;
+    padding: 1.4rem;
+  }
+
+  #mapa .reporte-caso-wide {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .videos-carousel {
+    padding: 0 2.4rem 2.8rem;
+  }
+
+  .video-carousel-btn {
+    width: 38px;
+    height: 54px;
+    font-size: 2.35rem;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1422,9 +1855,9 @@ a,
 <!-- NAV -->
 <nav>
   <div class="nav-brand">
-    <img src="img/logocampouwu.png" alt="Logo institución 1" class="nav-logo-img">
+    <img src="img/logo campo blanco.png" alt="Logo institución 1" class="nav-logo-img">
 
-    <img src="img/Senasica.png" alt="Logo institución 2" class="nav-logo-img">
+    <img src="img/Recurso 1.png" alt="Logo institución 2" class="nav-logo-img">
   </div>
 
   <ul class="nav-links">
@@ -1445,10 +1878,10 @@ a,
   <!-- Título y descripción -->
   <div style="display:flex;align-items:center;justify-content:space-between;width:100%;position:relative;z-index:2;margin-bottom:3.5rem;">
     <div class="hero-content" style="max-width:660px;">
-      <div class="hero-eyebrow">Acciones de prevencion</div>
-      <h1>Gusano <br/><span>Barrenador </span><br/>del ganado</h1>
+      <div class="hero-eyebrow">Acciones de prevención</div>
+      <h1>Gusano <br/><span>Barrenador </span><br/>del Ganado</h1>
       <p class="hero-desc">
-        <em>Cochliomyia hominivorax</em> — una de las plagas más devastadoras para la ganadería en América. Información técnica, alertas y vigilancia epidemiológica.
+        <em>Cochliomyia hominivorax</em>  Información técnica, alertas y vigilancia epidemiológica.
       </p>
       <a href="#informacion" class="hero-cta">
         <span>Explorar información</span>
@@ -1510,6 +1943,15 @@ a,
         <div class="hero-btn-arrow">→</div>
       </a>
 
+
+ <!-- INFORMACION GENERAL -->
+      <a href="#mapa" class="hero-btn btn-mapa" style="animation:fadeUp 0.7s ease 0.6s both;">
+        <div class="hero-btn-emoji">🗞️</div>
+        <div class="hero-btn-label">Información<br/>General</div>
+        <div class="hero-btn-sub">del Gusano Barrenador del Ganado</div>
+        <div class="hero-btn-arrow">→</div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -1524,7 +1966,7 @@ a,
 <!-- DATOS RÁPIDOS -->
 <div class="section" id="informacion" style="padding-bottom:0">
   <div class="section-header">
-    <div class="section-num">01</div>
+   
     <div class="section-title-block">
       <div class="section-label">Identificación</div>
       <h2 class="section-title">¿Qué es el Gusano Barrenador?</h2>
@@ -1591,149 +2033,15 @@ a,
 
 <div class="divider"></div>
 
-<!-- CICLO DE VIDA -->
-<section class="section section-alt" id="ciclo">
-  <div class="section-header">
-    <div class="section-num">02</div>
-    <div class="section-title-block">
-      <div class="section-label">Biología</div>
-      <h2 class="section-title">Ciclo de Vida</h2>
-    </div>
-  </div>
 
-  <div class="ciclo-grid">
-    <div class="ciclo-step">
-      <div class="ciclo-num">ETAPA 01</div>
-      <div class="ciclo-icon">🥚</div>
-      <div class="ciclo-name">Huevo</div>
-      <p class="ciclo-desc">La hembra deposita 200–400 huevos en bordes de heridas. Eclosionan en 12–21 horas según temperatura.</p>
-    </div>
-    <div class="ciclo-step">
-      <div class="ciclo-num">ETAPA 02</div>
-      <div class="ciclo-icon">🐛</div>
-      <div class="ciclo-name">Larva</div>
-      <p class="ciclo-desc">Tres instares larvales. Se alimentan de tejido vivo durante 5–7 días, penetrando en espiral hacia tejidos más profundos.</p>
-    </div>
-    <div class="ciclo-step">
-      <div class="ciclo-num">ETAPA 03</div>
-      <div class="ciclo-icon">🪺</div>
-      <div class="ciclo-name">Pupa</div>
-      <p class="ciclo-desc">Las larvas caen al suelo y se entierran. La pupación dura 7–14 días, formando pupario café oscuro.</p>
-    </div>
-    <div class="ciclo-step">
-      <div class="ciclo-num">ETAPA 04</div>
-      <div class="ciclo-icon">🪰</div>
-      <div class="ciclo-name">Adulto</div>
-      <p class="ciclo-desc">La mosca adulta vive 14–30 días. Las hembras se aparean una sola vez y pueden ovipositar múltiples veces.</p>
-    </div>
-  </div>
-</section>
 
-<div class="divider"></div>
-
-<!-- SÍNTOMAS -->
-<section class="section" id="sintomas">
-  <div class="section-header">
-    <div class="section-num">03</div>
-    <div class="section-title-block">
-      <div class="section-label">Diagnóstico</div>
-      <h2 class="section-title">Síntomas y Signos de Infestación</h2>
-    </div>
-  </div>
-
-  <div class="sintomas-list">
-    <div class="sintoma-item">
-      <div class="sintoma-num">01</div>
-      <div>
-        <div class="sintoma-title">Heridas con masa de larvas visibles</div>
-        <p class="sintoma-desc">Presencia de larvas blanquecinas enrolladas en espiral dentro de heridas activas. Las larvas son claramente visibles al retirar costras superficiales.</p>
-      </div>
-    </div>
-    <div class="sintoma-item">
-      <div class="sintoma-num">02</div>
-      <div>
-        <div class="sintoma-title">Olor fétido característico</div>
-        <p class="sintoma-desc">Las heridas infestadas emiten un olor penetrante a descomposición debido a las enzimas proteolíticas secretadas por las larvas al alimentarse.</p>
-      </div>
-    </div>
-    <div class="sintoma-item">
-      <div class="sintoma-num">03</div>
-      <div>
-        <div class="sintoma-title">Agitación e inquietud del animal</div>
-        <p class="sintoma-desc">El animal muestra signos de dolor, intento de rascarse la zona afectada, inapetencia y tendencia al aislamiento del hato.</p>
-      </div>
-    </div>
-    <div class="sintoma-item">
-      <div class="sintoma-num">04</div>
-      <div>
-        <div class="sintoma-title">Secreción serosanguinolenta</div>
-        <p class="sintoma-desc">Flujo de líquido oscuro y maloliente desde la herida. La lesión se expande rápidamente si no se trata, con bordes irregulares y tejido necrótico.</p>
-      </div>
-    </div>
-    <div class="sintoma-item">
-      <div class="sintoma-num">05</div>
-      <div>
-        <div class="sintoma-title">Presencia de moscas alrededor del animal</div>
-        <p class="sintoma-desc">Agrupación de moscas azul-verdosas en torno a heridas, ombligo de crías, cicatrices de descorne, marcas de castración o garrapatas desprendidas.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONTROL -->
-<section class="section section-alt" id="control">
-  <div class="section-header">
-    <div class="section-num">04</div>
-    <div class="section-title-block">
-      <div class="section-label">Manejo Integrado</div>
-      <h2 class="section-title">Estrategias de Control y Prevención</h2>
-    </div>
-  </div>
-
-  <div class="control-grid">
-    <div class="control-card">
-      <h3>🧪 Control Químico</h3>
-      <ul class="control-list">
-        <li>Aplicación de organofosforados (coumafós, diazinón) en heridas</li>
-        <li>Ivermectinas sistémicas para infestaciones activas</li>
-        <li>Aerosoles repelentes a base de cipermetrina</li>
-        <li>Tratamiento con doramectina como alternativa</li>
-        <li>Desparasitación regular del hato para reducir lesiones previas</li>
-      </ul>
-    </div>
-    <div class="control-card">
-      <h3>🌿 Control Cultural</h3>
-      <ul class="control-list">
-        <li>Revisión diaria del hato en temporada de lluvias</li>
-        <li>Desinfección inmediata de heridas con antisépticos</li>
-        <li>Programar cirugías y descornes en épocas de baja infestación</li>
-        <li>Ligar y desinfectar el ombligo de neonatos</li>
-        <li>Evitar hacinamiento y peleas entre animales</li>
-      </ul>
-    </div>
-    <div class="control-card">
-      <h3>🐝 Control Biológico</h3>
-      <ul class="control-list">
-        <li>Técnica del Insecto Estéril (TIE): liberación de machos irradiados</li>
-        <li>Programa exitoso aplicado en México y Centroamérica</li>
-        <li>Barrera biológica en el Darién, Panamá</li>
-        <li>Monitoreo con trampas cebadas con carne</li>
-        <li>Vigilancia epidemiológica activa en zonas de riesgo</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- BOLETINES -->
 
 <section class="section" id="boletines">
   <div class="section-header">
-    <div class="section-num">05</div>
+   
     <div class="section-title-block">
-      <div class="section-label">Publicaciones Técnicas</div>
-      <h2 class="section-title">Boletines de Vigilancia</h2>
+      <div class="section-label">Publicaciones permanentes</div>
+      <h2 class="section-title">Boletínes de Prensa</h2>
     </div>
   </div>
 
@@ -1743,8 +2051,8 @@ a,
     <article class="boletin-card">
       <img src="img/80.jpeg" alt="Boletín 1">
       <div class="boletin-card-body">
-        <span class="boletin-fecha">23 de abril 2026</span>
-        <h3>Gobierno De Morelos Mantiene Acciones De Vigilancia Sanitaria Pecuaria En Coordinación Con SENASICA</h3>
+        <span class="boletin-fecha">11 de mayo 2026</span>
+        <h3>Gobierno de Morelos Mantiene Acciones de Vigilancia Sanitaria Pecuaria dn Coordinación con SENASICA</h3>
        <p class="boletin-preview">
   En apego a las disposiciones federales en materia de sanidad animal el gobierno de La tierra que nos une mantiene e impulsa una estrategia permanente de vigilancia, prevención y control sanitario 
 
@@ -1759,7 +2067,7 @@ La Secretaría de Desarrollo Agropecuario (Sedagro), reitera que, en apego a la 
       <img src="img/1.jpg" alt="Boletín 1">
       <div class="boletin-card-body">
         <span class="boletin-fecha">23 de abril 2026</span>
-        <h3>Mantiene Gobierno de Morelos acciones coordinadas para la atención del gusano barrenador de ganado</h3>
+        <h3>Mantiene Gobierno de Morelos Acciones Coordinadas para la Atención del Gusano Barrenador de Ganado</h3>
        <p class="boletin-preview">
   • Es importante reportar de manera inmediata cualquier caso y mantener una revisión constante del hato ganadero
 
@@ -1776,7 +2084,7 @@ Desde que se tuvo conocimiento a nivel nacional de la presencia del Gusano Barre
       <img src="img/14.jpg" alt="Boletín 2">
       <div class="boletin-card-body">
         <span class="boletin-fecha">28 de febrero 2026</span>
-        <h3>Morelos fortalece Coordinación Regional contra el Gusano Barrenador del Ganado</h3>
+        <h3>Morelos Fortalece Coordinación Regional Contra el Gusano Barrenador del Ganado</h3>
         <p class="boletin-preview">
 • La titular de la Sedagro celebró que los estados de la región estén actuando de manera coordinada y responsable
 Con el objetivo de reforzar la coordinación interinstitucional en materia de sanidad, inocuidad y salud pública en la región Centro-Sur del país, el Gobierno de “La tierra que nos une”, a través de la titular de la Secretaria de Desarrollo Agropecuario (Sedagro), Margarita Galeana Torres, participó en la Reunión Regional para la Estrategia Conjunta contra el Gusano Barrenador del Ganado (GBG), junto con titulares del sector agropecuario de los estados de Michoacán, Estado de México, Guerrero y Puebla.
@@ -1790,7 +2098,7 @@ Con el objetivo de reforzar la coordinación interinstitucional en materia de sa
       <img src="img/20.jpg" alt="Boletín 3">
       <div class="boletin-card-body">
         <span class="boletin-fecha">19 de noviembre 2025</span>
-        <h3>Morelos fortalece Coordinación Regional contra el Gusano Barrenador del Ganado</h3>
+        <h3>Morelos Fortalece Coordinación Regional contra el Gusano Barrenador del Ganado</h3>
         <p class="boletin-preview">
 Mantenemos una estrecha comunicación con autoridades municipales para impulsar acciones conjuntas que nos permitan garantizar la salud del hato ganadero de Morelos y estar preparados ante cualquier contingencia, con el acompañamiento de la Secretaría de Salud en el estado y el Servicio Nacional de Sanidad, Inocuidad y Calidad Agroalimentaria (SENASICA).  
         </p>
@@ -1802,7 +2110,7 @@ Mantenemos una estrecha comunicación con autoridades municipales para impulsar 
       <img src="img/30.jpg" alt="Boletín 4">
       <div class="boletin-card-body">
         <span class="boletin-fecha">18 de junio 2025</span>
-        <h3>Participa Gobierno De “La Tierra Que Nos Une” En Seminario Regional Para La Prevención Del Gusano Barrenador </h3>
+        <h3>Participa Gobierno de “La Tierra Que Nos Une” en Seminario Regional para la Prevención del Gusano Barrenador </h3>
         <p class="boletin-preview">
           • Estas acciones permiten a la entidad estar preparada para proteger la producción ganadera: Margarita Galeana Torres, titular de Sedagro 
 El Gobierno de “La tierra que nos une”, a través de la Secretaría de Desarrollo Agropecuario (Sedagro), participó activamente en el Cuarto Seminario, Ejercicio y Simulacro para la Prevención del Gusano Barrenador del Ganado (GBG), el cual tuvo lugar en el estado de Tlaxcala y fue organizado por el Servicio Nacional de Sanidad, Inocuidad y Calidad Agroalimentaria (Senasica). 
@@ -1815,7 +2123,7 @@ El Gobierno de “La tierra que nos une”, a través de la Secretaría de Desar
       <img src="img/40.jpg" alt="Boletín 5">
       <div class="boletin-card-body">
         <span class="boletin-fecha">08 de junio 2026</span>
-        <h3>Avanza Capacitación Para Proteger Salud Del Ganado En Morelos </h3>
+        <h3>Avanza Capacitación para Proteger Salud del Ganado en Morelos </h3>
         <p class="boletin-preview">
 • A la fecha, no se ha registrado ningún caso de gusano barrenador en el estado*
 En continuidad a las acciones estratégicas en sanidad animal y en coordinación con la Comisión México–Estados Unidos para la Prevención de la Fiebre Aftosa y otras Enfermedades Exóticas de los Animales (CPA), la Secretaría de Desarrollo Agropecuario (Sedagro) llevó a cabo una nueva jornada de capacitación enfocada en la prevención y control del gusano barrenador del ganado, en el ejido de Huitchila, municipio de Tepalcingo.
@@ -1828,7 +2136,7 @@ En continuidad a las acciones estratégicas en sanidad animal y en coordinación
       <img src="img/50.jpg" alt="Boletín 6">
       <div class="boletin-card-body">
         <span class="boletin-fecha">27 de mayo 2025</span>
-        <h3>Información Oportuna Para Proteger La Salud Del Ganado En Morelos </h3>
+        <h3>Información Oportuna para Proteger la Salud del Ganado en Morelos </h3>
         <p class="boletin-preview">
         • Reitera Sedagro que hasta el momento no se ha registrado ningún caso de gusano barrenador en la entidad
 
@@ -1842,7 +2150,7 @@ Con la finalidad de poner al alcance información oportuna que permita proteger 
       <img src="img/60.jpg" alt="Boletín 7">
       <div class="boletin-card-body">
         <span class="boletin-fecha">19 de mayo 2025</span>
-        <h3>Refuerza Gobierno De Morelos Vigilancia Sanitaria En El Ingreso De Ganado Al Territorio Estatal </h3>
+        <h3>Refuerza Gobierno de Morelos Vigilancia Sanitaria en el Ingreso de Ganado al Territorio Estatal </h3>
         <p class="boletin-preview">
           • En la entidad no existen casos del gusano barrenador del ganado 
 • La Sedagro exhorta a las y los productores pecuarios a mantenerse alerta y reportar cualquier sospecha
@@ -1878,7 +2186,7 @@ El Gobierno de Morelos, “La tierra que nos une”, a través de la Secretaría
 <!-- INFOGRAFÍAS -->
 <section class="section section-alt" id="infografias">
   <div class="section-header">
-    <div class="section-num">06</div>
+    
     <div class="section-title-block">
       <div class="section-label">Material Visual</div>
       <h2 class="section-title">Infografías</h2>
@@ -1912,65 +2220,80 @@ El Gobierno de Morelos, “La tierra que nos une”, a través de la Secretaría
 <!-- VIDEOS -->
 <section class="section" id="videos" style="background:var(--verde-oscuro);">
   <div class="section-header">
-    <div class="section-num" style="color:var(--dorado);opacity:0.2;">07</div>
     <div class="section-title-block">
       <div class="section-label" style="color:var(--dorado-claro);">Recursos Audiovisuales</div>
       <h2 class="section-title" style="color:var(--crema);">Videos de Capacitación</h2>
     </div>
   </div>
 
-  <div class="videos-grid">
+  <div class="videos-carousel" aria-label="Carrusel de videos de capacitación">
+    <button class="video-carousel-btn prev" type="button" onclick="changeVideoSlide(-1)" aria-label="Video anterior">‹</button>
 
-    <!-- VIDEO 1 -->
-    <div class="video-card" onclick="openVideo('img/videoplayback.mp4')">
-  <div class="video-thumb">
-    <img src="img/f1.jpg" alt="Video 1">
+    <div class="videos-viewport">
+      <div class="videos-grid" id="videosTrack">
 
-    <div class="video-overlay">
-      <div class="video-play">▶</div>
+        <!-- VIDEO 1 -->
+        <div class="video-card" onclick="openVideo('videos/1.mp4')">
+          <div class="video-thumb">
+            <img src="videos/1.png" alt="Mosca del Gusano Barrenador del Ganado">
+            <div class="video-overlay">
+              <div class="video-play">▶</div>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3>Mosca del Gusano Barrenador del Ganado</h3>
+            <p>Sigue las recomendaciones sanitarias y revisa constantemente a tu ganado.</p>
+          </div>
+        </div>
+
+        <!-- VIDEO 2 -->
+        <div class="video-card" onclick="openVideo('videos/2.mp4')">
+          <div class="video-thumb">
+            <img src="videos/2.png" alt="Qué hacer al detectar un caso de GBG">
+            <div class="video-overlay">
+              <div class="video-play">▶</div>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3>¿Qué hacer al detectar un caso de GBG?</h3>
+            <p>Productor de Tlaltizapán nos comparte cómo hizo frente a esta situación con acompañamiento técnico.</p>
+          </div>
+        </div>
+
+        <!-- VIDEO 3 -->
+        <div class="video-card" onclick="openVideo('videos/3.mp4')">
+          <div class="video-thumb">
+            <img src="videos/3.png" alt="Recomendaciones ante el GBG">
+            <div class="video-overlay">
+              <div class="video-play">▶</div>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3>Recomendaciones de ganadero a ganadero ante el GBG</h3>
+            <p>Cuidar la sanidad animal, es proteger el patrimonio de las y los productores de Morelos.</p>
+          </div>
+        </div>
+
+        <!-- VIDEO 4 -->
+        <div class="video-card" onclick="openVideo('videos/4.mp4')">
+          <div class="video-thumb">
+            <img src="videos/4.png" alt="Ganaderos de Contlalco frente al GBG">
+            <div class="video-overlay">
+              <div class="video-play">▶</div>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3>Ganaderos de Contlalco nos relatan cómo hicieron frente al GBG</h3>
+            <p>La detección oportuna puede evitar lesiones graves en el hato ganadero.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
+
+    <button class="video-carousel-btn next" type="button" onclick="changeVideoSlide(1)" aria-label="Video siguiente">›</button>
+    <div class="video-carousel-dots" id="videoCarouselDots" aria-label="Indicadores del carrusel"></div>
   </div>
-
-  <div class="video-info">
-    <div class="boletin-tag">Tutorial</div>
-    <h3>Identificación y diagnóstico en campo</h3>
-    <p>Guía práctica para reconocer infestaciones activas en ganado bovino.</p>
-  </div>
-</div>
-
-    <!-- VIDEO 2 -->
-   <div class="video-card" onclick="openVideo('img/2 testimonio.mp4')">
-  <div class="video-thumb">
-    <img src="img/f3.jpg" alt="Video 1">
-
-    <div class="video-overlay">
-      <div class="video-play">▶</div>
-    </div>
-  </div>
-
-  <div class="video-info">
-    <div class="boletin-tag">Tutorial</div>
-    <h3>Identificación y diagnóstico en campo</h3>
-    <p>Guía práctica para reconocer infestaciones activas en ganado bovino.</p>
-  </div>
-</div>
-
-    <!-- VIDEO 3 -->
-    <div class="video-card" onclick="openVideo('img/74.mp4')">
-  <div class="video-thumb">
-    <img src="img/82.jpeg" alt="Video 1">
-
-    <div class="video-overlay">
-      <div class="video-play">▶</div>
-    </div>
-  </div>
-
-  <div class="video-info">
-    <div class="boletin-tag">Tutorial</div>
-    <h3>Identificación y diagnóstico en campo</h3>
-    <p>Guía práctica para reconocer infestaciones activas en ganado bovino.</p>
-  </div>
-</div>
 </section>
 
 
@@ -1988,9 +2311,9 @@ El Gobierno de Morelos, “La tierra que nos une”, a través de la Secretaría
 <!-- GALERÍA -->
 <section class="section section-alt" id="galeria">
   <div class="section-header">
-    <div class="section-num">08</div>
+   
     <div class="section-title-block">
-      <div class="section-label">Registro Fotográfico</div>
+      
       <h2 class="section-title">Galería</h2>
     </div>
   </div>
@@ -2065,10 +2388,10 @@ El Gobierno de Morelos, “La tierra que nos une”, a través de la Secretaría
 <!-- MAPA DE CASOS -->
 <section class="section section-alt" id="mapa">
   <div class="section-header">
-    <div class="section-num">09</div>
+  
     <div class="section-title-block">
-      <div class="section-label">Mapa de casos activos</div>
-      <h2 class="section-title">Casos reportados</h2>
+    
+      <h2 class="section-title">Mapa de casos GBG</h2>
     </div>
   </div>
   <div class="mapa-grid">
@@ -2082,7 +2405,7 @@ El Gobierno de Morelos, “La tierra que nos une”, a través de la Secretaría
 
     <div class="mapa-contenedor">
       <iframe
-        src="qgis2web_2026_05_12-15_04_16_526113/index.html"
+        src="MAPA/qgis2web_2026_05_15-10_48_19_428391/index.html"
         title="Mapa de casos de gusano barrenador">
       </iframe>
     </div>
@@ -2093,163 +2416,223 @@ El Gobierno de Morelos, “La tierra que nos une”, a través de la Secretaría
   <!-- Panel lateral de estadísticas -->
   <div class="mapa-stats">
     <div style="background:var(--verde-oscuro);color:var(--crema);padding:1.5rem;">
-      <div style="font-family:'Courier Prime',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--dorado);margin-bottom:0.5rem;">Resumen semanal</div>
-      <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--crema);">52</div>
-      <div style="font-size:0.82rem;opacity:0.6;">casos reportados </div>
+      <div style="font-family:'Courier Prime',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--dorado);margin-bottom:0.5rem;">Semana epidemiológica 19</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--crema);">38</div>
+      <div style="font-size:0.82rem;opacity:0.6;">casos activos</div>
     </div>
 
     <div style="background:white;border:1px solid rgba(74,140,63,0.2);padding:1.5rem;">
       <div style="font-family:'Courier Prime',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--verde-claro);margin-bottom:1rem;">Por Muncipio</div>
 
       <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Tepalcingo</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Tlaquiltenango</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Tepoztlán</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Ayala</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Miacatlán</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="color:#555;">Tlaquiltenango </span>
+  <span style="font-weight:700;color:#e67e22;">6</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
   <span style="color:#555;">Yecapixtla</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="font-weight:700;color:#e67e22;">6</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Amacuzac</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Jantetelco</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Jonacatepec</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Tlaltizapán</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="color:#555;">Tepalcingo</span>
+  <span style="font-weight:700;color:#e67e22;">4</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
   <span style="color:#555;">Cuernavaca</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="font-weight:700;color:#e67e22;">3</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Jojutla</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="color:#555;">puente de Ixtla</span>
+  <span style="font-weight:700;color:#e67e22;">3</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Puente de Ixtla</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="color:#555;">Tepoztlan</span>
+  <span style="font-weight:700;color:#e67e22;">3</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Tetecala</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="color:#555;">Tlaltizapán de Zapata</span>
+  <span style="font-weight:700;color:#e67e22;">3</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Axochiapan</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="color:#555;">Miacatlan</span>
+  <span style="font-weight:700;color:#e67e22;">2</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Cuatetelco</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Cuautla</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Zacualpan</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="color:#555;">Amacuzac</span>
+  <span style="font-weight:700;color:#e67e22;">2</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
   <span style="color:#555;">Atlatlahucan</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="font-weight:700;color:#e67e22;">1</span>
+</div>
+<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
+
+<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
+  <span style="color:#555;">Axochiapan</span>
+  <span style="font-weight:700;color:#e67e22;">1</span>
+</div>
+<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
+
+<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
+  <span style="color:#555;">Ayala</span>
+  <span style="font-weight:700;color:#e67e22;">1</span>
+</div>
+<div style="height:1px;background:rgba(0,0,0,0.06);"></div>
+
+<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
+  <span style="color:#555;">Cuautla</span>
+  <span style="font-weight:700;color:#e67e22;">1</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
   <span style="color:#555;">Jiutepec</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="font-weight:700;color:#e67e22;">1</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Mazatepec</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="color:#555;">Ocuituco</span>
+  <span style="font-weight:700;color:#e67e22;">1</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
 <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Temixco</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
+  <span style="color:#555;">Tlayacapan</span>
+  <span style="font-weight:700;color:#e67e22;">1</span>
 </div>
 <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
 
-<div style="display:flex;justify-content:space-between;font-size:0.85rem;">
-  <span style="color:#555;">Temoac</span>
-  <span style="font-weight:700;color:#e67e22;">●</span>
-</div>
-    <BR><BR>
 
-    <div style="background:#fff8f8;border:1px solid rgba(139,32,32,0.2);padding:1.5rem;">
-      <div style="font-family:'Courier Prime',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rojo-alerta);margin-bottom:0.8rem;">⚠ Reporte un caso</div>
-      <p style="font-size:0.82rem;line-height:1.5;color:#666;margin-bottom:1rem;">Si detecta signos de infestación, notifique de inmediato al servicio veterinario oficial.</p>
-      <a href="tel:8009001000" style="display:block;text-align:center;background:var(--rojo-alerta);color:white;padding:0.7rem;font-family:'Courier Prime',monospace;font-size:0.8rem;letter-spacing:0.08em;text-decoration:none;transition:background 0.2s;">📞 55 5905 1000</a>
-    </div>
+</div>
+
   </div>
-
 </div>
+
+  <div class="reporte-caso-wide">
+    <div>
+      <div class="reporte-caso-wide-title">⚠ Reporte un caso sospechoso</div>
+      <p>Ante cualquier caso sospechoso notifique de inmediato a las autoridades de sanidad animal competentes. </p>
+    </div>
+    <a href="tel:5559051000">📞 55 5905 1000</a>
+  </div>
 
  
 </section>
+
+
+
+
+ <h2 class="section-title">INFORMACION General</h2>
+<!-- CICLO DE VIDA -->
+<section class="section section-alt" id="ciclo">
+  <div class="section-header">
+    
+    <div class="section-title-block">
+      <div class="section-label">Biología</div>
+      <h2 class="section-title">Ciclo de Vida</h2>
+    </div>
+  </div>
+
+  <div class="ciclo-grid">
+    <div class="ciclo-step">
+      <div class="ciclo-num">ETAPA 01</div>
+      <div class="ciclo-icon">🥚</div>
+      <div class="ciclo-name">Huevo</div>
+      <p class="ciclo-desc">La hembra deposita 200–400 huevos en bordes de heridas. Eclosionan en 12–21 horas según temperatura.</p>
+    </div>
+    <div class="ciclo-step">
+      <div class="ciclo-num">ETAPA 02</div>
+      <div class="ciclo-icon">🐛</div>
+      <div class="ciclo-name">Larva</div>
+      <p class="ciclo-desc">Tres instares larvales. Se alimentan de tejido vivo durante 5–7 días, penetrando en espiral hacia tejidos más profundos.</p>
+    </div>
+    <div class="ciclo-step">
+      <div class="ciclo-num">ETAPA 03</div>
+      <div class="ciclo-icon">🪺</div>
+      <div class="ciclo-name">Pupa</div>
+      <p class="ciclo-desc">Las larvas caen al suelo y se entierran. La pupación dura 7–14 días, formando pupario café oscuro.</p>
+    </div>
+    <div class="ciclo-step">
+      <div class="ciclo-num">ETAPA 04</div>
+      <div class="ciclo-icon">🪰</div>
+      <div class="ciclo-name">Adulto</div>
+      <p class="ciclo-desc">La mosca adulta vive 14–30 días. Las hembras se aparean una sola vez y pueden ovipositar múltiples veces.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SÍNTOMAS -->
+<section class="section" id="sintomas">
+  <div class="section-header">
+    
+    <div class="section-title-block">
+      <div class="section-label">Diagnóstico</div>
+      <h2 class="section-title">Síntomas y Signos de Infestación</h2>
+    </div>
+  </div>
+
+  <div class="sintomas-list">
+    <div class="sintoma-item">
+      <div class="sintoma-num">01</div>
+      <div>
+        <div class="sintoma-title">Heridas con masa de larvas visibles</div>
+        <p class="sintoma-desc">Presencia de larvas blanquecinas enrolladas en espiral dentro de heridas activas. Las larvas son claramente visibles al retirar costras superficiales.</p>
+      </div>
+    </div>
+    <div class="sintoma-item">
+      <div class="sintoma-num">02</div>
+      <div>
+        <div class="sintoma-title">Olor fétido característico</div>
+        <p class="sintoma-desc">Las heridas infestadas emiten un olor penetrante a descomposición debido a las enzimas proteolíticas secretadas por las larvas al alimentarse.</p>
+      </div>
+    </div>
+    <div class="sintoma-item">
+      <div class="sintoma-num">03</div>
+      <div>
+        <div class="sintoma-title">Agitación e inquietud del animal</div>
+        <p class="sintoma-desc">El animal muestra signos de dolor, intento de rascarse la zona afectada, inapetencia y tendencia al aislamiento del hato.</p>
+      </div>
+    </div>
+    <div class="sintoma-item">
+      <div class="sintoma-num">04</div>
+      <div>
+        <div class="sintoma-title">Secreción serosanguinolenta</div>
+        <p class="sintoma-desc">Flujo de líquido oscuro y maloliente desde la herida. La lesión se expande rápidamente si no se trata, con bordes irregulares y tejido necrótico.</p>
+      </div>
+    </div>
+    <div class="sintoma-item">
+      <div class="sintoma-num">05</div>
+      <div>
+        <div class="sintoma-title">Presencia de moscas alrededor del animal</div>
+        <p class="sintoma-desc">Agrupación de moscas azul-verdosas en torno a heridas, ombligo de crías, cicatrices de descorne, marcas de castración o garrapatas desprendidas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
 
 <!-- FOOTER -->
 <footer>
@@ -2605,6 +2988,62 @@ Por último, la Secretaría de Desarrollo Agropecuario exhorta a las y los produ
       closeInfografia();
     }
   });
+</script>
+
+<script>
+  let videoSlideActual = 0;
+
+  function inicializarCarruselVideos() {
+    const track = document.getElementById("videosTrack");
+    const dotsContainer = document.getElementById("videoCarouselDots");
+
+    if (!track || !dotsContainer) return;
+
+    const slides = track.querySelectorAll(".video-card");
+    dotsContainer.innerHTML = "";
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "video-carousel-dot";
+      dot.setAttribute("aria-label", `Ir al video ${index + 1}`);
+      dot.onclick = () => goToVideoSlide(index);
+      dotsContainer.appendChild(dot);
+    });
+
+    actualizarCarruselVideos();
+  }
+
+  function actualizarCarruselVideos() {
+    const track = document.getElementById("videosTrack");
+    const dots = document.querySelectorAll(".video-carousel-dot");
+
+    if (!track) return;
+
+    const slides = track.querySelectorAll(".video-card");
+    if (!slides.length) return;
+
+    if (videoSlideActual < 0) videoSlideActual = slides.length - 1;
+    if (videoSlideActual >= slides.length) videoSlideActual = 0;
+
+    track.style.transform = `translateX(-${videoSlideActual * 100}%)`;
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === videoSlideActual);
+    });
+  }
+
+  function changeVideoSlide(direction) {
+    videoSlideActual += direction;
+    actualizarCarruselVideos();
+  }
+
+  function goToVideoSlide(index) {
+    videoSlideActual = index;
+    actualizarCarruselVideos();
+  }
+
+  document.addEventListener("DOMContentLoaded", inicializarCarruselVideos);
 </script>
 <script>
   function openVideo(src) {
